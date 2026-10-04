@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AhorraMeta Negocios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/auth.css">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<div class="cargando-pantalla" id="cargandoPantalla">
+  <div class="cargando-marca">AM</div>
+  <p>Abriendo tu libro…</p>
+</div>
+
+<div class="marco" id="marco" hidden>
+
+  <!-- ============ Rail lateral ============ -->
+  <nav class="rail" id="rail" aria-label="Navegación principal">
+    <div class="rail-marca">
+      <span class="tapa-logo">AM</span>
+      <div>
+        <p class="rail-negocio" id="railNegocio">AhorraMeta</p>
+        <p class="rail-tipo" id="railTipo">Cuenta</p>
+      </div>
+    </div>
+
+    <div class="rail-nav" id="railNav"><!-- se arma en app.js --></div>
+
+    <div class="rail-pie">
+      <button class="rail-usuario" id="btnMenuUsuario">
+        <span class="avatar" id="avatarUsuario">?</span>
+        <span class="rail-usuario-txt">
+          <span id="nombreUsuario">Usuario</span>
+          <span id="correoUsuario">correo</span>
+        </span>
+      </button>
+      <button class="rail-salir" id="btnSalir">Cerrar sesión</button>
+    </div>
+  </nav>
+
+  <div class="rail-sombra" id="railSombra" hidden></div>
+
+  <!-- ============ Contenido ============ -->
+  <div class="lienzo">
+
+    <header class="barra">
+      <button class="btn-menu" id="btnMenu" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="barra-titulo">
+        <p class="eyebrow" id="vistaEyebrow">Resumen</p>
+        <h1 id="vistaTitulo">Resumen</h1>
+      </div>
+
+      <div class="barra-acciones">
+        <div class="selector-mes">
+          <button class="mes-flecha" id="mesAtras" aria-label="Mes anterior">‹</button>
+          <span class="mes-valor" id="mesValor">—</span>
+          <button class="mes-flecha" id="mesAdelante" aria-label="Mes siguiente">›</button>
+        </div>
+        <button class="btn btn-principal btn-auto" id="btnRapido">Registrar movimiento</button>
+      </div>
+    </header>
+
+    <main class="vista" id="vista"><!-- se arma en app.js --></main>
+  </div>
+</div>
+
+<div class="toast-zona" id="toastZona" role="status" aria-live="polite"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="js/config.js"></script>
+<script src="js/util.js"></script>
+<script src="js/store.js"></script>
+<script src="js/bitacora.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/calculos.js"></script>
+<script src="js/views-core.js"></script>
+<script src="js/views-negocio.js"></script>
+<script src="js/views-historial.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

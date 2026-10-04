@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AhorraMeta Negocios — Entrar</title>
+<meta name="description" content="Control de finanzas para personas y microempresas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth-body">
+
+<main class="auth">
+
+  <!-- ============ Panel izquierdo: la tapa del libro ============ -->
+  <aside class="tapa">
+    <div class="tapa-marca">
+      <span class="tapa-logo">AM</span>
+      <div>
+        <p class="tapa-nombre">AhorraMeta</p>
+        <p class="tapa-linea">Negocios</p>
+      </div>
+    </div>
+
+    <div class="tapa-centro">
+      <p class="eyebrow tapa-eyebrow">Libro de cuentas</p>
+      <h1 class="tapa-titulo">Sabé exactamente<br>hasta cuándo<br>te alcanza.</h1>
+      <p class="tapa-texto">
+        Registrá lo que entra y lo que sale. Nosotros calculamos el resto:
+        presupuesto, márgenes, cobros pendientes y cuántos días de caja te quedan.
+      </p>
+    </div>
+
+    <!-- Cinta de registros: decoración que sí dice algo (un libro se llena por renglones) -->
+    <div class="tapa-cinta" aria-hidden="true">
+      <div class="renglon"><span>Venta del día</span><span class="cifra pos-t">+ 142.00</span></div>
+      <div class="renglon"><span>Mercadería</span><span class="cifra neg-t">− 380.50</span></div>
+      <div class="renglon"><span>Factura #0041 cobrada</span><span class="cifra pos-t">+ 615.00</span></div>
+      <div class="renglon"><span>Alquiler local</span><span class="cifra neg-t">− 250.00</span></div>
+      <div class="renglon"><span>Venta del día</span><span class="cifra pos-t">+ 198.75</span></div>
+    </div>
+  </aside>
+
+  <!-- ============ Panel derecho: los formularios ============ -->
+  <section class="hoja">
+    <div class="hoja-caja">
+
+      <!-- ---------- ENTRAR ---------- -->
+      <div class="panel" id="panelLogin">
+        <p class="eyebrow">Bienvenido de vuelta</p>
+        <h2 class="panel-titulo">Entrar a tu cuenta</h2>
+
+        <div class="campo">
+          <label for="loginCorreo">Correo</label>
+          <input type="email" id="loginCorreo" autocomplete="email" placeholder="vos@correo.com">
+        </div>
+
+        <div class="campo">
+          <label for="loginPass">Contraseña</label>
+          <input type="password" id="loginPass" autocomplete="current-password" placeholder="••••••••">
+        </div>
+
+        <p class="error" id="errLogin" hidden></p>
+
+        <button class="btn btn-principal" id="btnEntrar">Entrar</button>
+
+        <div class="panel-pie">
+          <button class="enlace" data-ir="panelRecuperar">Olvidé mi contraseña</button>
+          <span class="sep">·</span>
+          <button class="enlace" data-ir="panelTipo">Crear una cuenta</button>
+        </div>
+      </div>
+
+      <!-- ---------- PASO 1 DEL REGISTRO: TIPO DE CUENTA ---------- -->
+      <div class="panel" id="panelTipo" hidden>
+        <p class="eyebrow">Paso 1 de 2</p>
+        <h2 class="panel-titulo">¿Para qué la vas a usar?</h2>
+        <p class="panel-sub">Esto define qué herramientas ves adentro. Podés cambiarlo después.</p>
+
+        <div class="tipos">
+          <button class="tipo" data-tipo="personal">
+            <span class="tipo-marca">Personal</span>
+            <span class="tipo-desc">Tus ingresos y gastos, presupuesto por categoría y metas de ahorro.</span>
+            <ul class="tipo-lista">
+              <li>Movimientos y categorías</li>
+              <li>Presupuesto mensual</li>
+              <li>Metas de ahorro</li>
+              <li>Alertas de gasto</li>
+            </ul>
+            <span class="tipo-check" aria-hidden="true"></span>
+          </button>
+
+          <button class="tipo tipo-destacado" data-tipo="empresarial">
+            <span class="tipo-marca">Empresarial<span class="tipo-badge">+7 módulos</span></span>
+            <span class="tipo-desc">Todo lo personal, más el control completo de una microempresa.</span>
+            <ul class="tipo-lista">
+              <li>Clientes y proveedores</li>
+              <li>Cuentas por cobrar y por pagar</li>
+              <li>Inventario con stock mínimo</li>
+              <li>Márgenes y punto de equilibrio</li>
+              <li>Planilla y centros de costo</li>
+              <li>Flujo de caja proyectado</li>
+            </ul>
+            <span class="tipo-check" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <div class="panel-pie">
+          <button class="enlace" data-ir="panelLogin">Ya tengo cuenta</button>
+        </div>
+      </div>
+
+      <!-- ---------- PASO 2 DEL REGISTRO: DATOS ---------- -->
+      <div class="panel" id="panelRegistro" hidden>
+        <p class="eyebrow">Paso 2 de 2 · <span id="etiquetaTipo">Cuenta personal</span></p>
+        <h2 class="panel-titulo">Creá tu cuenta</h2>
+
+        <div class="campo">
+          <label for="regNombre">Tu nombre</label>
+          <input type="text" id="regNombre" autocomplete="name" placeholder="Nombre y apellido">
+        </div>
+
+        <!-- Solo empresarial -->
+        <div id="bloqueNegocio" hidden>
+          <div class="campo">
+            <label for="regNegocio">Nombre del negocio</label>
+            <input type="text" id="regNegocio" placeholder="Ej. Tienda La Esquina">
+          </div>
+          <div class="campo-fila">
+            <div class="campo">
+              <label for="regGiro">Giro</label>
+              <select id="regGiro">
+                <option value="Comercio">Comercio / tienda</option>
+                <option value="Comida">Comida y bebida</option>
+                <option value="Servicios">Servicios</option>
+                <option value="Taller">Taller o manufactura</option>
+                <option value="Belleza">Belleza y cuidado</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="regEmpleados">Empleados</label>
+              <select id="regEmpleados">
+                <option value="1">Solo yo</option>
+                <option value="2">2 a 4</option>
+                <option value="5">5 a 10</option>
+                <option value="11">Más de 10</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="regCorreo">Correo</label>
+          <input type="email" id="regCorreo" autocomplete="email" placeholder="vos@correo.com">
+        </div>
+
+        <div class="campo">
+          <label for="regPass">Contraseña</label>
+          <input type="password" id="regPass" autocomplete="new-password" placeholder="Mínimo 6 caracteres">
+          <div class="fuerza"><span id="barraFuerza"></span></div>
+          <p class="ayuda" id="textoFuerza">Usá al menos 6 caracteres.</p>
+        </div>
+
+        <p class="error" id="errRegistro" hidden></p>
+
+        <button class="btn btn-principal" id="btnRegistrar">Crear cuenta</button>
+
+        <div class="panel-pie">
+          <button class="enlace" data-ir="panelTipo">Cambiar tipo de cuenta</button>
+          <span class="sep">·</span>
+          <button class="enlace" data-ir="panelLogin">Ya tengo cuenta</button>
+        </div>
+      </div>
+
+      <!-- ---------- RECUPERAR ---------- -->
+      <div class="panel" id="panelRecuperar" hidden>
+        <p class="eyebrow">Recuperar acceso</p>
+        <h2 class="panel-titulo">Restablecer contraseña</h2>
+        <p class="panel-sub">Te mandamos un enlace al correo con el que te registraste.</p>
+
+        <div class="campo">
+          <label for="recCorreo">Correo</label>
+          <input type="email" id="recCorreo" autocomplete="email" placeholder="vos@correo.com">
+        </div>
+
+        <p class="error" id="errRecuperar" hidden></p>
+
+        <button class="btn btn-principal" id="btnRecuperar">Enviar enlace</button>
+
+        <div class="panel-pie">
+          <button class="enlace" data-ir="panelLogin">Volver a entrar</button>
+        </div>
+      </div>
+
+      <p class="modo" id="avisoModo" hidden></p>
+    </div>
+  </section>
+
+</main>
+
+<div class="toast-zona" id="toastZona" role="status" aria-live="polite"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="js/config.js"></script>
+<script src="js/util.js"></script>
+<script src="js/store.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>
